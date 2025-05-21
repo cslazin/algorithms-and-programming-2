@@ -1,0 +1,24 @@
+1 – Faça um menu iterativo para selecionar um dos exercícios desta lista de exercícios. Use o laço do while e switch case.
+
+#include <stdio.h>
+
+int main(){
+int numeroDaQuestao;
+    printf("Digite o numero da questao para abrir (1-3):\n");
+    scanf("%d", &numeroDaQuestao);
+        switch(numeroDaQuestao){
+        case 1:
+            printf("\nExercicio 1.\n");
+            break;
+        case 2:
+            printf("\nExercicio 2.\n");
+            break;
+        case 3:
+            printf("\nExercicio 3.\n");
+            break;
+        default:
+            printf("\nNao encontrado.\n");
+            break;
+}
+    return 0;
+}
