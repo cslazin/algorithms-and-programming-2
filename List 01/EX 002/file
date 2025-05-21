@@ -1,0 +1,12 @@
+2 – Faça um programa que receba o tempo em horas e converta e imprima na tela, o tempo em segundos.
+
+#include <stdio.h>
+
+int main(){
+int horas;
+    printf("Digite as horas:\n");
+        scanf("%d", &horas);
+        horas *= 3600;
+    printf("\nHoras em segundos: %d\n", horas);
+    return 0;
+}
