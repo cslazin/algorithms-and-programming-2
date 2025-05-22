@@ -1,0 +1,21 @@
+5 – Faça um programa que usando o laço do tipo for receba um valor N do tipo inteiro e positivo (fazer tratamento de erro), calcule e mostre o Fatorial de N.
+
+#include <stdio.h>
+
+int main() {
+    int numeroInteiro, resultadoParcial, i;
+
+    printf("Digite um numero inteiro:\n");
+    scanf("%d", &numeroInteiro);
+
+    resultadoParcial = numeroInteiro;
+
+    for (i = numeroInteiro - 1; i >= 1; i--) {
+        printf("\n%d x %d = ", resultadoParcial, i);
+        resultadoParcial *= i;
+        printf("%d", resultadoParcial);
+    }
+
+    printf("\n\nFatorial de %d = %d\n", numeroInteiro, resultadoParcial);
+    return 0;
+}
