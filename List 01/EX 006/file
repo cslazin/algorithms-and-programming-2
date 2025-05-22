@@ -1,0 +1,26 @@
+6 – Faça um programa que usando o laço do tipo while receba um valor N do tipo inteiro e positivo (fazer tratamento de erro), calcule e mostre o Fibonacci de N.
+
+#include <stdio.h>
+
+int main() {
+int i=2,numero;
+int a=0,b=1, fibonacci=0;
+    printf("Digite um numero inteiro:\n");
+    scanf("%d", &numero);
+
+    if(numero==0){
+        fibonacci = 0;
+    } else if (numero==1){
+        fibonacci = 1;
+    }else{
+    while(i<=numero){
+        fibonacci = a+b;
+        a = b;
+        b = fibonacci;
+            i++;
+}
+    fibonacci = b;
+}
+    printf("\nF(%d) = %d.\n", numero, fibonacci);
+    return 0;
+}
