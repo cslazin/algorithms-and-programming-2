@@ -1,0 +1,38 @@
+2 – Faça um programa que:
+a) Preencha os campos da struct do exercício anterior
+b) Imprima os campos da struct do exercício anterior
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    
+//montar struct
+
+    struct companhia{
+    char nomeCompanhia[50];
+    char areaAtuacao[50];
+    double valorNovo;
+    double valorAntigo;
+    double valorDiferenca;
+};
+    struct companhia companhia1;
+
+//preencher struct
+
+    strcpy(companhia1.nomeCompanhia, "Mercado do Marquim.\n");
+    strcpy(companhia1.areaAtuacao, "Supermercado.\n");
+    companhia1.valorNovo =  1000;
+    companhia1.valorAntigo = 500;
+    companhia1.valorDiferenca = ((companhia1.valorNovo-companhia1.valorAntigo)/companhia1.valorNovo)*100;
+
+//imprimir struct
+
+    printf("STRUCT:\n");
+    printf("\n%s", companhia1.nomeCompanhia);
+    printf("%s", companhia1.areaAtuacao);
+    printf("%.2lf\n", companhia1.valorNovo);
+    printf("%.2lf\n", companhia1.valorAntigo);
+    printf("Novo valor: %.1lf%%\n", companhia1.valorDiferenca);
+
+}
