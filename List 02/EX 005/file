@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main(){
+    int i;
+    int diasDif, dias[2];
+    
+ struct data{
+    int dataDia;
+    int dataMes;
+    int dataAno;
+ };
+
+ struct data data[3];
+
+ //preencher duas structs
+    printf("DATA:\n");
+    for(i=0; i<2; i++){
+        printf("\nDigite o dia:\n");
+        scanf("%d", &data[i].dataDia);
+        dias[i] = data[i].dataDia*1;
+        getchar();
+        printf("Digite o mes:\n");
+        scanf("%d", &data[i].dataMes);
+        dias[i] += data[i].dataMes*30;
+        getchar();
+        printf("Digite o ano:\n");
+        scanf("%d", &data[i].dataAno);
+        dias[i] += data[i].dataAno*365;
+        getchar();
+}
+    if (dias[0]>dias[1]){
+        diasDif = dias[0] - dias[1];
+    }else{
+        diasDif = dias[1] - dias[0];
+    }
+    printf("\n\nDiferenca de dias: %d\n", diasDif);
+
+    return 0;
+}
