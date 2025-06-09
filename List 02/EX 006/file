@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+    struct fichaCliente{
+    char nome[50];
+    char endereco[50];
+    char email[30];
+    int idade;
+    long long cpf;
+    char sexo;
+    int dia, mes, ano;
+    float imc;
+    float peso, altura;
+};
+    struct fichaCliente fichaCliente1;
+    int main(){
+    strcpy(fichaCliente1.nome,"Canabrava");
+    strcpy(fichaCliente1.email, "canabrava@gmail.com");
+    strcpy(fichaCliente1.endereco, "Rua 200. Morada da Lua");
+    fichaCliente1.idade = 40;
+    fichaCliente1.cpf = 10000001000LL;
+    fichaCliente1.sexo = 'M';
+    fichaCliente1.dia = 10;
+    fichaCliente1.mes = 10;
+    fichaCliente1.ano = 1985;
+    fichaCliente1.peso = 80;
+    fichaCliente1.altura = 1.80;
+    fichaCliente1.imc = fichaCliente1.peso / (fichaCliente1.altura * fichaCliente1.altura);
+
+    return 0;
+
+}
