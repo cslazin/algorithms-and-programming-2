@@ -1,0 +1,76 @@
+Código em C para calcular e classificar a nota de alunos...
+
+#include <stdio.h>
+#include <string.h>
+
+struct Dados {
+    char nome[50];
+    char curso[50];
+    float nota1, nota2, nota3;
+};
+
+void removerEnter(char str[]) {
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+    }
+}
+
+int main() {
+    int i;
+    char notaMaiorNome[50] = "", mgMaiorNome[50] = "", mgMenorNome[50] = "";
+    float notaMaior = 0, mgMaior = 0, mgMenor = 10, mediaGeral;
+
+    struct Dados dados[5];
+
+    for (i = 0; i < 5; i++) {
+        printf("\nNome do aluno:\n");
+        fgets(dados[i].nome, sizeof(dados[i].nome), stdin);
+        removerEnter(dados[i].nome);
+
+        printf("Curso:\n");
+        fgets(dados[i].curso, sizeof(dados[i].curso), stdin);
+        removerEnter(dados[i].curso);
+
+        printf("Nota 1:\n");
+        scanf("%f", &dados[i].nota1);
+        getchar();
+
+        if (dados[i].nota1 > notaMaior) {
+            notaMaior = dados[i].nota1;
+            strcpy(notaMaiorNome, dados[i].nome);
+        }
+
+        printf("Nota 2:\n");
+        scanf("%f", &dados[i].nota2);
+        getchar();
+
+        printf("Nota 3:\n");
+        scanf("%f", &dados[i].nota3);
+        getchar();
+
+        mediaGeral = (dados[i].nota1 + dados[i].nota2 + dados[i].nota3) / 3;
+
+        if (mediaGeral >= 6) {
+            printf("%s: Aprovado!!\n", dados[i].nome);
+        } else {
+            printf("%s: Reprovado!!\n", dados[i].nome);
+        }
+
+        if (mediaGeral > mgMaior) {
+            mgMaior = mediaGeral;
+            strcpy(mgMaiorNome, dados[i].nome);
+        }
+        if (mediaGeral < mgMenor) {
+            mgMenor = mediaGeral;
+            strcpy(mgMenorNome, dados[i].nome);
+        }
+    }
+
+    printf("\n\n--- RESULTADOS FINAIS ---\n");
+    printf("Maior Nota 1: %s - %.2f\n", notaMaiorNome, notaMaior);
+    printf("Maior Média Geral: %s - %.2f\n", mgMaiorNome, mgMaior);
+    printf("Menor Média Geral: %s - %.2f\n", mgMenorNome, mgMenor);
+
+    return 0;
+}
