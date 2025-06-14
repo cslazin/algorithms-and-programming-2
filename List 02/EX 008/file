@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+
+struct Dados{
+    char rua[50];
+    int numero;
+    long long cep;
+};
+
+struct Informacoes{
+    char nome[50];
+    double saldo;
+    struct Dados Dados1;
+};
+
+    int main(){
+
+    //Preencher struct dupla
+    struct Informacoes info;
+    strcpy(info.nome, "Lazaro");
+    strcpy(info.Dados1.rua, "Rua Tiago Alano");
+    info.Dados1.numero = 506;
+    info.Dados1.cep = 21318962;
+    info.saldo = 1350,50;
+
+    //Imprimir struct dupla
+    printf("STRUCT:\n");
+    printf("\nNome: %s", info.nome);
+    printf("\nEndereco: %s, %d, %lld", info.Dados1.rua, info.Dados1.numero, info.Dados1.cep);
+    printf("\nSaldo: R$ %.2lf\n\n", info.saldo);
+
+    return 0;
+}
