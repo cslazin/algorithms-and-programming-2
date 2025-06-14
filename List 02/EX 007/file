@@ -1,0 +1,138 @@
+//Programa em C, para preencher a Struct do exercício passado.
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define MAX_CLIENT 100
+
+    void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+    system("clear");
+    #endif
+}
+
+
+    struct fichaCliente{
+    char nome[50];
+    char endereco[50];
+    char email[30];
+    int idade;
+    long long cpf;
+    char sexo;
+    int dia, mes, ano;
+    float imc;
+    float peso, altura;
+};
+    struct fichaCliente fichaCliente[MAX_CLIENT];
+    int main(){
+
+    int controleCliente = 0;
+    int i;
+    int numeroCliente;
+    int idRegistro[MAX_CLIENT];
+    int quantidadeCadastro;
+    int escolha;
+
+    do{
+
+    printf("MENU:\n");
+    printf("1- CADASTRO:\n");
+    printf("2- PESQUISAR:\n");
+    printf("3- SAIR:\n");
+    scanf("%d", &escolha);
+    getchar();
+    switch(escolha){
+
+    case 1:
+    limparTela();
+    printf("CADASTRO:\n");
+    printf("Quantos deseja cadastrar?\n");
+    scanf("%d", &quantidadeCadastro);
+    getchar();
+    for (i=0; i<quantidadeCadastro; i++){
+        printf("\nNome:\n");
+        fgets(fichaCliente[i].nome, sizeof(fichaCliente[i].nome), stdin);
+        printf("Email:\n");
+        fgets(fichaCliente[i].email, sizeof(fichaCliente[i].email), stdin);
+        printf("Endereco:\n");
+        fgets(fichaCliente[i].endereco, sizeof(fichaCliente[i].endereco), stdin);
+        printf("Idade:\n");
+        scanf("%d", &fichaCliente[i].idade);
+        getchar();
+        printf("CPF:\n");
+        scanf("%lld", &fichaCliente[i].cpf);
+        getchar();
+        printf("Sexo do cliente:\n");
+        scanf("%c", &fichaCliente[i].sexo);
+        getchar();
+        printf("DIA NASC:\n");
+        scanf("%d", &fichaCliente[i].dia);
+        getchar();
+         printf("MES NASC:\n");
+        scanf("%d", &fichaCliente[i].mes);
+        getchar();
+         printf("ANO NASC:\n");
+        scanf("%d", &fichaCliente[i].ano);
+        getchar();
+        printf("Peso:\n");
+        scanf("%f", &fichaCliente[i].peso);
+        getchar();
+        printf("Altura:\n");
+        scanf("%f", &fichaCliente[i].altura);
+        getchar();
+
+    fichaCliente[i].imc = fichaCliente[i].peso / (fichaCliente[i].altura * fichaCliente[i].altura);
+
+        printf("IMC: %.2f", fichaCliente[i].imc);
+        printf("\nID REGISTRO: %d\n", i);
+        idRegistro[i]=i;
+        controleCliente++;
+    }
+        break;
+
+    case 2:
+    limparTela();
+    printf("Digite o ID REGISTRO:\n");
+    scanf("%d", &numeroCliente);
+    getchar();
+
+    if (controleCliente > 0) {
+        int encontrado = 0;
+        for (i = 0; i < controleCliente; i++) {
+            if (numeroCliente == idRegistro[i]) {
+                encontrado = 1;
+                printf("Nome: %s", fichaCliente[i].nome);
+                printf("Email: %s", fichaCliente[i].email);
+                printf("Endereco: %s", fichaCliente[i].endereco);
+                printf("Idade: %d\n", fichaCliente[i].idade);
+                printf("CPF: %lld\n", fichaCliente[i].cpf);
+                printf("Sexo: %c\n", fichaCliente[i].sexo);
+                printf("Nascimento: %d/%d/%d\n", fichaCliente[i].dia, fichaCliente[i].mes, fichaCliente[i].ano);
+                printf("Peso: %.2f\n", fichaCliente[i].peso);
+                printf("Altura: %.2f\n", fichaCliente[i].altura);
+                printf("IMC: %.2f\n", fichaCliente[i].imc);
+            }
+        }
+        if (!encontrado) {
+            printf("Cliente com ID %d não encontrado!\n", numeroCliente);
+        }
+    } else {
+        printf("Nenhum cliente cadastrado ainda!\n");
+    }
+    break;
+
+
+        case 3:
+            printf("\nFechando o programa...\n");
+            break;
+        default:
+            printf("Erro!!");
+            break;
+    }
+    } while (escolha !=3);
+
+    return 0;
+
+}
